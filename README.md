@@ -3,9 +3,7 @@ REST API для работы с пользователями
 
     Базовый URL : http://localhost:8080
     Порт по умолчанию : 8080
-    Формат данных : JSON
-    Методы аутентификации : JSON Web Token (JWT) или Basic Auth (в зависимости от реализации)
-     
+    
 
 Методы API 
 1. Создание пользователя 
@@ -20,13 +18,6 @@ REST API для работы с пользователями
     Тело запроса :
     json
      
-
- 
-1
-2
-3
-4
-⌄
 {
     "email": "test@example.com",
     "password": "password123"
@@ -34,28 +25,11 @@ REST API для работы с пользователями
  
  
 Пример запроса :
-bash
- 
- 
-1
-2
-3
+
 curl -X POST http://localhost:8080/api/users \
 -H "Content-Type: application/json" \
 -d '{"email": "test@example.com", "password": "password123"}'
  
- 
-Ответ :
-json
- 
-
-     
-    1
-    2
-    3
-    4
-    5
-    ⌄
     {
         "id": 1,
         "email": "test@example.com",
@@ -77,13 +51,6 @@ json
     Тело запроса :
     json
      
-
- 
-1
-2
-3
-4
-⌄
 {
     "email": "new_email@example.com",
     "password": "new_password123"
@@ -91,12 +58,7 @@ json
  
  
 Пример запроса :
-bash
- 
- 
-1
-2
-3
+
 curl -X PUT http://localhost:8080/api/users/1 \
 -H "Content-Type: application/json" \
 -d '{"email": "new_email@example.com", "password": "new_password123"}'
@@ -104,15 +66,6 @@ curl -X PUT http://localhost:8080/api/users/1 \
  
 Ответ :
 json
- 
-
-     
-    1
-    2
-    3
-    4
-    5
-    ⌄
     {
         "id": 1,
         "email": "new_email@example.com",
@@ -132,20 +85,12 @@ json
     bash
      
 
- 
-1
 curl -X DELETE http://localhost:8080/api/users/1
  
  
 Ответ :
 json
- 
 
-     
-    1
-    2
-    3
-    ⌄
     {
         "message": "User deleted"
     }
@@ -164,14 +109,7 @@ json
          
     Тело запроса :
     json
-     
 
- 
-1
-2
-3
-4
-⌄
 {
     "email": "test@example.com",
     "password": "password123"
@@ -180,11 +118,7 @@ json
  
 Пример запроса :
 bash
- 
- 
-1
-2
-3
+
 curl -X POST http://localhost:8080/api/login \
 -H "Content-Type: application/json" \
 -d '{"email": "test@example.com", "password": "password123"}'
@@ -192,13 +126,7 @@ curl -X POST http://localhost:8080/api/login \
  
 Ответ :
 json
- 
 
-     
-    1
-    2
-    3
-    ⌄
     {
         "message": "Login successful"
     }
@@ -215,23 +143,12 @@ json
     Пример запроса :
     bash
      
-
- 
-1
 curl http://localhost:8080/api/users/1
  
  
 Ответ :
 json
- 
 
-     
-    1
-    2
-    3
-    4
-    5
-    ⌄
     {
         "id": 1,
         "email": "test@example.com",
@@ -247,27 +164,13 @@ json
 Для запуска сервера используйте команду: 
 bash
  
- 
-1
 symfony server:start --port=8080
  
  
 2. Порт  
 
-API работает на порту 8080. Если вы хотите изменить порт, укажите его явно: 
-bash
- 
- 
-1
-symfony server:start --port=<НОМЕР_ПОРТА>
- 
- 
-3. Настройка безопасности  
-обрабатывается через конфигурацию в файле config/packages/security.yaml. Для использования JWT или других механизмов аутентификации потребуется дополнительная настройка. 
-4. База данных  
+API работает на порту 8080
 
-Для хранения пользователей используется база данных. Убедитесь, что таблица user создана и содержит необходимые поля (id, email, password, roles). 
-5. Ошибки  
 
     400 Bad Request : Некорректные данные в запросе.
     401 Unauthorized : Пользователь не авторизован.
